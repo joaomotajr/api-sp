@@ -1,0 +1,39 @@
+<html ng-app='myapp'>
+
+<head>
+    <title>Hello Rest</title>
+    <script src="angular.min.js"></script>
+    <script>
+
+        var app = angular.module('myapp', ['dependency']);
+        //var app = angular.module('myapp', []);
+
+    </script>
+
+
+    <script src="api-interceptor-controller.js"></script>
+
+
+</head>
+
+<body>
+    <div ng-controller='mycontroller'>
+
+        <div>                        
+            <input type="button" value="teste" ng-click='testa()' />
+            <hr />
+
+            Matricula: <input type="text" ng-model='matriculaDB' id="matriculaDB" />
+            <input type="button" value="Consultar Usuario Matricula" ng-click='ConsultarUsuarioMatricula()' />		
+            <hr />            
+            <input type="button" value="insert auditoria" ng-click='insertauditoria()' />
+            <hr />            
+            <strong>Resposta:</strong> 
+            <br />
+
+            {{resp}}
+
+        </div>
+    </div>
+</body>
+</html>

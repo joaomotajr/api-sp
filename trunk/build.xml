@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<project name="Copy File" default="copyFile" basedir=".">
+	<target name="copyFile">
+		<echo> *************************************************** </echo>
+		<echo> Copiando arquivo para o deployment do standalone </echo>
+		<echo> *************************************************** </echo>
+		<copy file="C:/SoftWare/Cedessp/api-sharepoint/trunk/target/api-sharepoint.war" todir="C:/SoftWare/Install/jboss-eap-6.3/standalone/deployments"/>
+	</target>
+</project>

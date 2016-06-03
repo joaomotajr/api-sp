@@ -1,0 +1,108 @@
+<html ng-app='api_sp'>
+	
+    <head>
+        <title>Hello Rest</title>
+        <script src="jquery-2.1.4.min.js"></script>
+        <script src="Funcionario.js"></script>
+		<script src="Coordenacao.js"></script>
+		<script src="angular.min.js"></script>
+		<script src="Ldap.js"></script>
+		
+		
+		<script>		
+			var app = angular.module('api_sp', []);
+		</script>
+		
+		<script src="funcionario-controller.js"></script>
+		<script src="api-controller.js"></script>
+		
+		
+    </head>
+
+    <body>
+        <div ng-controller='api_ctrl'>
+			<div>
+				IP: <input type="text" ng-model='ip' id='ip' value='localhost' /><br>
+				<hr/>
+			</div>
+			<div>
+				Matricula: <input type="text" id="matricula" />
+				<input type="button" value="Consultar Grupos AD" onclick="ConsultarGruposUsuario()"/>			
+				<hr/>
+			</div>
+			
+			<div>
+				Matricula: <input type="text" id="matricula2" />
+				<input type="button" value="Consultar Dados Usuario AD" onclick="ConsultarDadosUsuario()"/>			
+				<hr/>
+			</div>
+			
+			<div>
+				Grupo AD: <input type="text" id="GrupoAd"/>
+				<input type="button" value="Consultar Usuarios AD" onclick="consultarUsuariosGrupo()"/>
+				<hr/>
+			</div>
+			
+			<div>
+				Grupo AD: <input type="text" id="TestGrupoAd"/>
+				<input type="button" value="Consultar Todos Usuarios AD" onclick="consultarTodosUsuariosGrupo()"/>
+				<hr/>
+			</div>
+			
+			<div>
+				Coordenacao: <input type="text" id="coordenacao"/>
+				<input type="button" value="Coordenacao - Nome" onclick="consultarCoordenacaoNome()"/>			
+				<input type="button" value="Coordenacao - Id" onclick="consultarCoordenacaoId()"/>
+				<input type="button" value="Coordenacao - Id Funcionario" onclick="consultarCoordenacaoIdFuncionario()"/>
+  			<input type="button" value="Coordenacoes - Id Parent" onclick="consultarCoordenacaoParentId()"/> 
+				<input type="button" value="Coordenacoes - Id Funcionario" onclick="consultarCoordenacoesIdFuncionario()"/>
+				<input type="button" value="Coordenacoes - Id " onclick="consultarCoordenacoesId()"/>				                                                                                  
+				<hr/>
+			</div>
+			<div>
+				Matricula: <input type="text" ng-model='matriculaDB' id="matriculaDB" />
+				<input type="button" value="Consultar Usuario Matricula" ng-click='ConsultarUsuarioMatricula()'/>		
+				<input type="button" value="Consultar Usuario ID" ng-click='ConsultarUsuarioId()' />	
+				<hr/>
+			</div>
+			
+			<div style="font-family:Courrier New;">
+				Coordenacao: <br />
+				<input type="text" id="CoordenacaoUID" value="null" /> UID <br />
+				<input type="text" id="CoordenacaoDescricao" value="teste" /> Descricao <br />
+				<input type="text" id="CoordenacaoGrupo" value="teste" /> Grupo AD <br />
+				<input type="text" id="CoordenacaoTipo" value="1" /> Tipo<br />
+				<input type="text" id="CoordenacaoURL" value="teste" /> URL <br />
+				<input type="text" id="CoordenacaoNome" value="teste" /> Nome <br />
+				<input type="text" id="CoordenacaoCoordenador" value="1" /> Coordenador <br />
+				<input type="text" id="CoordenacaoParent" value="3" /> Parent:<br />
+				<input type="button" value="Salvar Coordenacao" onclick="InsereCoordenacao()"/>			
+				<input type="button" value="Seta Parent" onclick="SetaParent()"/>			
+				<input type="button" value="Seta Coordenador" onclick="SetaCoordenador()"/>			
+				<input type="button" value="Seta Descricao" onclick="SetaDescricao()"/>				
+				
+				<hr/>
+			</div>
+			
+				<div>
+				Funcionarios: <input type="text" ng-model='funcionariosDB' />
+				<input type="button" value="Consultar Funcionarios Coordenacao" ng-click='ConsultarFuncionariosIdCoordenacao()'/>
+					
+				<hr/>
+				
+				<div>
+				SIAPP: <input type="text" ng-model='siappDB' />
+                <input type="button" value="Consultar Sistema" ng-click='obterAllSiappPorCoordenacao()' />				
+				<input type="button" value="insert SIAPP" ng-click='insertSIAPP()'/>
+					
+				<hr/>
+			</div>
+			
+			<div id="retorno">{{funcionario}} </div>
+        </div>
+		<hr/>
+		<div>
+		
+		</div>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
+    	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+    	<jta-data-source>java:jboss/datasources/sharepointDS</jta-data-source>
+    	
+    	<class>br.gov.caixa.api.model.Coordenacao</class>
+    	<class>br.gov.caixa.api.model.Funcionario</class>
+    	<class>br.gov.caixa.api.model.SegmentoNegocio</class>
+    	<class>br.gov.caixa.api.model.Ativo</class>
+    	<class>br.gov.caixa.api.model.Siapp</class>
+    	<class>br.gov.caixa.api.model.Auditoria</class>
+    	<class>br.gov.caixa.api.model.Profile</class>
+    	<class>br.gov.caixa.api.model.Timeline</class>
+    	<class>br.gov.caixa.api.model.Disciplina</class>
+    	<class>br.gov.caixa.api.model.Atividade</class>
+    	<class>br.gov.caixa.api.model.RatingAtividade</class>
+    	<class>br.gov.caixa.api.model.ApoioFuncionario</class>
+    	<class>br.gov.caixa.api.model.CategoriaTecnologica</class>
+    	<class>br.gov.caixa.api.model.Ferramenta</class>
+    	<class>br.gov.caixa.api.model.BuscaMediaFuncionario</class>
+    	<class>br.gov.caixa.api.model.RatingFerramenta</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>			
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.jdbc.batch_size" value="100" />
+			<property name="hibernate.order_inserts" value="true" />
+			<property name="hibernate.order_updates" value="true" />
+			<property name="hibernate.cache.use_second_level_cache" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

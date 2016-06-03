@@ -1,0 +1,511 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+	<body>
+        <style type="text/css">
+            .panel-heading {
+                cursor: pointer;
+            }
+
+            .col-sm-4, .col-sm-12 {
+                transition: all 500ms;
+            }
+
+            .col-sm-12, .col-sm-4 {
+                transition: all 500ms;
+            }
+        </style>
+
+        <div id="angularCtrl" ng-controller='api_pages_coordenacao_producao'>
+            <div class="panel panel-danger" ng-show="msgErro">
+                <div class="panel-body">
+                    {{msgErro}}
+                </div>
+            </div>
+
+            <!-- Inicio totais Coordenação TI -->
+            <div id="resumo" class="row" style="margin-left: -30px; margin-right: -30px;">
+                <div class="col-lg-12">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card red summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-male fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">{{coordenacao.funcionarios}}</div>
+                                        <div class="sub-title">Funcionários</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card yellow summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-comments fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">{{coordenacao.ativos}}</div>
+                                        <div class="sub-title">Ativos</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card green summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-desktop fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">{{coordenacao.sistemas}}</div>
+                                        <div class="sub-title">Sistemas</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <a href="#">
+                            <div class="card blue summary-inline">
+                                <div class="card-body">
+                                    <i class="icon fa fa-share-alt fa-4x"></i>
+                                    <div class="content">
+                                        <div class="title">{{coordenacoesCount}}</div>
+                                        <div class="sub-title">Coordenações</div>
+                                    </div>
+                                    <div class="clear-both"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div> <!-- Inicio totais Coordenação TI -->
+            <!-- Inicio Coordenações Projeto -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row row-example">
+
+                        <div id="panel1" class="col-sm-4" ng-show="coordenacoesProjeto[0].uid">
+                            <div class="panel fresh-color panel-primary">
+                                <div class="panel-heading" ng-click='ExpandePanel(1);'>{{coordenacoesProjeto[0].nome}} <span id="spanPanel1" class="glyphicon glyphicon-chevron-down pull-right"></span></div>
+                                <div class="panel-body">
+
+                                    <!-- Inicio Expandido 01 -->
+                                    <div id="expandido1" class="card-body no-padding" style="display:none">
+
+                                        <!-- Inicio Resumo 01 -->
+                                        <div id="resumo1" class="row" style="display:none">
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS0=false;showListF0=true;showListA0=false">
+                                                        <div class="card red summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-male fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[0].funcionarios}}</div>
+                                                                    <div class="sub-title">Funcionários</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS0=false;showListF0=false;showListA0=true;">
+                                                        <div class="card yellow summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-comments fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[0].ativos}}</div>
+                                                                    <div class="sub-title">Ativos</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS0=true;showListF0=false;showListA0=false">
+                                                        <div class="card green summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-desktop fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[0].sistemas}}</div>
+                                                                    <div class="sub-title">Sistemas</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> <!-- FIM Resumo 01 -->
+
+                                        <div class="title" ng-show="showListF0">FUNCIONÁRIOS</div>
+                                        <div class="title" ng-show="showListA0">ATIVOS</div>
+                                        <div class="title" ng-show="showListS0">SISTEMAS</div>
+
+                                        <hr />
+
+                                        <!-- Inicio Detalhes 01 -->
+                                        <div class="row" ng-class="" ng-show="showListF0">
+
+                                            <div ng-repeat="funcionario in funcionariosCoordenacoes[0]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-danger">
+                                                        <div class="panel-heading">{{funcionario.nome}}</div>
+                                                        <div class="panel-body">
+                                                            Matrícula: {{funcionario.matricula}}  <br />
+                                                            Cargo: {{funcionario.cargo}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="showListA0">
+                                            <div ng-repeat="ativo in AtivosCoordenacao[0]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-warning">
+                                                        <div class="panel-heading">{{ativo.nome}}</div>
+                                                        <div class="panel-body">
+                                                            Tipo: {{ativo.tipoAtivo}}  <br />
+                                                            Descrição: {{ativo.descricao}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="showListS0">
+                                            <div ng-repeat="sistema in SistemasCoordenacao[0]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-success">
+                                                        <div class="panel-heading">{{sistema.sistema}}</div>
+                                                        <div class="panel-body">
+                                                            Carteira: {{sistema.carteira}}  <br />
+                                                            Código: {{sistema.codigo}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- FIM Detalhes 01 -->
+
+                                    </div> <!-- FIM Expandido 01 -->
+
+                                    <div id="reduzido1" class="card-body no-padding">
+                                        <div class="thumbnail">
+                                            <img src="../../../StyleLibrary/Images/database.jpg" class="img-responsive" />
+                                            <div class="caption">
+                                                <h3 id="thumbnail-label">{{coordenacoesProjeto[0].titulo}}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                                <p>{{coordenacoesProjeto[0].descricao}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="panel2" class="col-sm-4" ng-show="coordenacoesProjeto[1].uid">
+                            <div class="panel fresh-color panel-success">
+                                <div class="panel-heading" ng-click='ExpandePanel(2);'> {{coordenacoesProjeto[1].nome}} <span id="spanPanel2" class="glyphicon glyphicon-chevron-down pull-right"></span></div>
+                                <div class="panel-body">
+
+                                    <!-- Inicio Expandido 02 -->
+                                    <div id="expandido2" class="card-body no-padding" style="display:none">
+
+                                        <div id="resumo2" class="row" style="display:none">
+                                            <div class="col-lg-12">
+
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS1=false;showListF1=true;showListA1=false">
+                                                        <div class="card red summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-male fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[1].funcionarios}}</div>
+                                                                    <div class="sub-title">Funcionários</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS1=false;showListF1=false;showListA1=true">
+                                                        <div class="card yellow summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-comments fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[1].ativos}}</div>
+                                                                    <div class="sub-title">Ativos</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS1=true;showListF1=false;showListA1=false">
+                                                        <div class="card green summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-desktop fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[1].sistemas}}</div>
+                                                                    <div class="sub-title">Sistemas</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <hr />
+                                        <!-- Inicio Detalhes 02 -->
+                                        <div class="row" ng-show="showListF1">
+                                            <div ng-repeat="funcionario in funcionariosCoordenacoes[1]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-danger">
+                                                        <div class="panel-heading">{{funcionario.nome}}</div>
+                                                        <div class="panel-body">
+                                                            Matrícula: {{funcionario.matricula}}  <br />
+                                                            Cargo: {{funcionario.cargo}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="showListA1">
+                                            <div ng-repeat="ativo in AtivosCoordenacao[1]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-warning">
+                                                        <div class="panel-heading">{{ativo.nome}}</div>
+                                                        <div class="panel-body">
+                                                            Tipo: {{ativo.tipoAtivo}}  <br />
+                                                            Descrição: {{ativo.descricao}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="showListS1">
+                                            <div ng-repeat="sistema in SistemasCoordenacao[1]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-success">
+                                                        <div class="panel-heading">{{sistema.sistema}}</div>
+                                                        <div class="panel-body">
+                                                            Carteira: {{sistema.carteira}}  <br />
+                                                            Código: {{sistema.codigo}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- FIM Detalhes 02 -->
+
+                                    </div> <!-- FIM Expandido 02 -->
+
+                                    <div id="reduzido2" class="card-body no-padding">
+                                        <div class="thumbnail">
+                                            <img src="../../../StyleLibrary/Images/architeture.jpg" class="img-responsive" />
+                                            <div class="caption">
+                                                <h3 id="thumbnail-label">{{coordenacoesProjeto[1].titulo}}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                                <p>{{coordenacoesProjeto[1].descricao}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="panel3" class="col-sm-4" ng-show="coordenacoesProjeto[2].uid">
+                            <div class="panel fresh-color panel-info">
+                                <div class="panel-heading" ng-click='ExpandePanel(3);'>{{coordenacoesProjeto[2].nome}}<span id="spanPanel3" class="glyphicon glyphicon-chevron-down pull-right"></span></div>
+                                <div class="panel-body">
+
+                                    <!-- Inicio Expandido 03 -->
+                                    <div id="expandido3" class="card-body no-padding" style="display:none">
+
+                                        <div id="resumo3" class="row" style="display:none">
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS2=false;showListF2=true;showListA2=false">
+                                                        <div class="card red summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-male fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[2].funcionarios}}</div>
+                                                                    <div class="sub-title">Funcionários</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS2=false;showListF2=false;showListA2=true">
+                                                        <div class="card yellow summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-comments fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[2].ativos}}</div>
+                                                                    <div class="sub-title">Ativos</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                                    <a href="#" ng-click="showListS2=true;showListF2=false;showListA2=false">
+                                                        <div class="card green summary-inline">
+                                                            <div class="card-body">
+                                                                <i class="icon fa fa-desktop fa-4x"></i>
+                                                                <div class="content">
+                                                                    <div class="title">{{coordenacao.coordenacoes[2].sistemas}}</div>
+                                                                    <div class="sub-title">Sistemas</div>
+                                                                </div>
+                                                                <div class="clear-both"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <hr />
+
+                                        <!-- Inicio Detalhes 03 -->
+                                        <div class="row" ng-show="showListF2">
+                                            <div ng-repeat="funcionario in funcionariosCoordenacoes[2]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-danger">
+                                                        <div class="panel-heading">{{funcionario.nome}}</div>
+                                                        <div class="panel-body">
+                                                            Matrícula: {{funcionario.matricula}}  <br />
+                                                            Cargo: {{funcionario.cargo}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="showListA2">
+                                            <div ng-repeat="ativo in AtivosCoordenacao[2]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-warning">
+                                                        <div class="panel-heading">{{ativo.nome}}</div>
+                                                        <div class="panel-body">
+                                                            Tipo: {{ativo.tipoAtivo}}  <br />
+                                                            Descrição: {{ativo.descricao}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" ng-show="showListS2">
+                                            <div ng-repeat="sistema in SistemasCoordenacao[2]">
+                                                <div class="col-sm-3">
+                                                    <div class="panel fresh-color panel-success">
+                                                        <div class="panel-heading" style="background-color: #1ABC9C; border-bottom: #1ABC9C">{{sistema.sistema}}</div>
+                                                        <div class="panel-body">
+                                                            Carteira: {{sistema.carteira}}  <br />
+                                                            Código: {{sistema.codigo}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- FIM Detalhes 03 -->
+
+                                    </div> <!-- FIM Expandido 03 -->
+
+                                    <div id="reduzido3" class="card-body no-padding">
+                                        <div class="thumbnail">
+                                            <img src="../../../StyleLibrary/Images/soa.jpg" class="img-responsive" />
+                                            <div class="caption">
+                                                <h3 id="thumbnail-label">{{coordenacoesProjeto[2].titulo}}<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                                <p>{{coordenacoesProjeto[2].descricao}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Fim Coordenações Projeto -->
+
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <div class="title">Guardião</div>
+                            </div>
+                        </div>
+                        <div class="card-body no-padding">
+                            <div id="chart_guardiao" style="width: 900px; height: 500px;" chartguardiao=chartguardiao></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <div class="title">Sonar</div>
+                            </div>
+                        </div>
+                        <div class="card-body no-padding">
+                            <div id="chart_sonar" style="width: 900px; height: 500px;" chartsonar=chartsonar></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-3">
+                    <div class="pricing-table green">
+                        <div class="pt-header">
+                            <div class="plan-pricing">
+                                <div class="pricing">SIROTCON</div>
+                            </div>
+                        </div>
+                        <div class="pt-body">
+                            <span class="icon fa fa-thumbs-o-up fa-4x" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="pricing-table red">
+                        <div class="pt-header">
+                            <div class="plan-pricing">
+                                <div class="pricing">CICS</div>
+                            </div>
+                        </div>
+                        <div class="pt-body">
+                            <span class="icon fa fa-thumbs-o-down fa-4x" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>	
+	</body>
+</html>
